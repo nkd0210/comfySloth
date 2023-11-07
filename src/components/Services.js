@@ -3,7 +3,34 @@ import styled from 'styled-components'
 import { services } from '../utils/constants'
 
 const Services = () => {
-  return <h4>services </h4>
+  return (
+    <Wrapper>
+      <div className='section-center'>
+        <article className='header'>
+          <h3>
+            custom furniture <br />
+            built only for you
+          </h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea reiciendis adipisci amet enim, quis quae repudiandae tempora! Autem, minima. Inventore dolores pariatur voluptas assumenda quod, tenetur odio animi a. Mollitia.
+          </p>
+        </article>
+        <div className='services-center'>
+          {services.map((service) => {
+            const { id, icon, text, title } = service;
+            return (
+              <article key={id} className='service'>
+                <span className='icon'>{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            )
+          })}
+        </div>
+      </div>
+
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -43,6 +70,7 @@ const Wrapper = styled.section`
     display: grid;
     margin: 0 auto;
     place-items: center;
+    margin: 0 auto;
     margin-bottom: 1rem;
     border-radius: 50%;
     background: var(--clr-primary-10);
@@ -51,17 +79,18 @@ const Wrapper = styled.section`
       font-size: 2rem;
     }
   }
+  @media (min-width: 576px) {
+    .services-center {
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    }
+  }
   @media (min-width: 992px) {
     .header {
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
   }
-  @media (min-width: 576px) {
-    .services-center {
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-    }
-  }
+  
   @media (min-width: 1280px) {
     padding: 0;
     .section-center {
