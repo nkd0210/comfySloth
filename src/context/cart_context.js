@@ -38,7 +38,7 @@ export const CartProvider = ({ children }) => {
     dispatch({ type: REMOVE_CART_ITEM, payload: id })
   }
 
-  const toogleAmount = (id, value) => {
+  const toggleAmount = (id, value) => {
     dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } })
   }
 
@@ -52,7 +52,7 @@ export const CartProvider = ({ children }) => {
   }, [state.cart])
 
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItem, toogleAmount, clearCart }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ ...state, addToCart, removeItem, toggleAmount, clearCart }}>{children}</CartContext.Provider>
   )
 }
 // make sure use
