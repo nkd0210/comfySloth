@@ -1,10 +1,10 @@
-import React from 'react'
-import { FaShoppingCart, FaUserMinus, FaUserPlus } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import { useProductsContext } from '../context/products_context'
-import { useCartContext } from '../context/cart_context'
-import { useUserContext } from '../context/user_context'
+import React from "react";
+import { FaShoppingCart, FaUserMinus, FaUserPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { useProductsContext } from "../context/products_context";
+import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
@@ -12,32 +12,33 @@ const CartButtons = () => {
   const { loginWithRedirect, myUser, logout } = useUserContext();
 
   return (
-    <Wrapper className='cart-btn-wrapper'>
-      <Link to='/cart' className='cart-btn' onClick={closeSidebar}>
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/cart" className="cart-btn" onClick={closeSidebar}>
         Cart
-        <span className='cart-container' >
+        <span className="cart-container">
           <FaShoppingCart />
-          <span className='cart-value'>{total_items}</span>
+          <span className="cart-value">{total_items}</span>
         </span>
       </Link>
 
       {myUser ? (
-        <button type='button' className='auth-btn' onClick={() => logout({ returnTo: window.location.origin })}>
+        <button
+          type="button"
+          className="auth-btn"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
           Logout
           <FaUserMinus />
         </button>
       ) : (
-        <button type='button' className='auth-btn' onClick={loginWithRedirect}>
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
           Login
           <FaUserPlus />
         </button>
       )}
-
-
-
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -54,6 +55,11 @@ const Wrapper = styled.div`
 
     align-items: center;
   }
+
+  .cart-btn:hover {
+    color: var(--clr-primary-5);
+  }
+
   .cart-container {
     display: flex;
     align-items: center;
@@ -91,6 +97,8 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
   }
-
-`
-export default CartButtons
+  .auth-btn:hover {
+    color: var(--clr-primary-5);
+  }
+`;
+export default CartButtons;
