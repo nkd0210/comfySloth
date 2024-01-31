@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
+import Login from "../pages/Login"
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
@@ -21,7 +22,10 @@ const CartButtons = () => {
         </span>
       </Link>
 
-      {myUser ? (
+      <Link to="/login" onClick={closeSidebar}>
+        Login
+      </Link>
+      {/* {myUser ? (
         <button
           type="button"
           className="auth-btn"
@@ -35,7 +39,7 @@ const CartButtons = () => {
           Login
           <FaUserPlus />
         </button>
-      )}
+      )} */}
     </Wrapper>
   );
 };
