@@ -42,6 +42,15 @@ const Wrapper = styled.section`
     color: var(--clr-grey-5);
     font-size: 1rem;
   }
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-10px) rotate(0deg); }
+    50% { transform: translateX(10px) rotate(0deg); }
+    75% { transform: translateX(-10px) rotate(0deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     grid-template-columns: 1fr 1fr;
@@ -55,6 +64,9 @@ const Wrapper = styled.section`
     .hero-btn {
       padding: 0.75rem 1.5rem;
       font-size: 1rem;
+    }
+    .hero-btn:hover {
+      animation: shake 0.5s ease-in-out;
     }
     .img-container {
       display: block;

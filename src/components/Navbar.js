@@ -28,7 +28,7 @@ const Nav = () => {
           {links.map((link) => {
             const { id, text, url } = link;
             return (
-              <li key={id}>
+              <li  key={id}>
                 <Link to={url}>{text}</Link>
               </li>
             );
@@ -78,14 +78,22 @@ const NavContainer = styled.nav`
     font-size: 30px;
     font-weight: 700;
     color: hsl(21.3, 31.1%, 52.2%);
+    transition: transform 0.3s linear;
   }
 
   .logo:hover {
     color: var(--clr-primary-7);
+    transform: scale(1.2);
   }
 
   .nav-links {
     display: none;
+  }
+  .nav-links li {
+    transition: transform 0.3s linear;
+  }
+  .nav-links li:hover {
+    transform: scale(1.2);
   }
   .cart-btn-wrapper {
     display: none;

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
+import { PageHero } from '../components'
 
 export default function Login() {
   useEffect(() => {
@@ -34,72 +35,75 @@ export default function Login() {
   };
 
   return (
-    <Wrapper>
-      <div class="container" id="container">
-        <div class="form-container sign-up-container">
-          <form action="#">
-            <h1>Create Account</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button onClick={handleSignUpClick}>Sign Up</button>
-          </form>
-        </div>
-        <div class="form-container sign-in-container">
-          <form action="#">
-            <h1 onClick={handleSignInClick}>Sign in</h1>
-            <div class="social-container">
-              <a href="#" class="social">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" class="social">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            <span>or use your account</span>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
-          </form>
-        </div>
-        <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
-              <h1>Welcome Back!</h1>
-              <p>
-                To keep connected with us please login with your personal info
-              </p>
-              <button class="ghost" id="signIn">
-                Sign In
-              </button>
-            </div>
-            <div class="overlay-panel overlay-right">
-              <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
-              <button class="ghost" id="signUp">
-                Sign Up
-              </button>
+    <main>
+      {/* <PageHero title="login"/> */}
+      <Wrapper>
+        <div class="container" id="container">
+          <div class="form-container sign-up-container">
+            <form action="#">
+              <h1>Create Account</h1>
+              <div class="social-container">
+                <a href="/facebook" class="social">
+                  <i class="icon fa-brands fa-square-facebook"></i>
+                </a>
+                <a href="/instagram" class="social">
+                  <i class="icon fa-brands fa-square-instagram"></i>
+                </a>
+                <a href="/twitter" class="social">
+                  <i class="icon fa-brands fa-square-twitter"></i>
+                </a>
+              </div>
+              <span>or use your email for registration</span>
+              <input type="text" placeholder="Name" />
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <button className="signUpBtn" onClick={handleSignUpClick}>Sign Up</button>
+            </form>
+          </div>
+          <div class="form-container sign-in-container">
+            <form action="#">
+              <h1 onClick={handleSignInClick}>Sign in</h1>
+              <div class="social-container">
+                <a href="/facebook" class="social">
+                  <i class="icon fa-brands fa-square-facebook"></i>
+                </a>
+                <a href="/instagram" class="social">
+                  <i class="icon fa-brands fa-square-instagram"></i>
+                </a>
+                <a href="/twitter" class="social">
+                  <i class="icon fa-brands fa-square-twitter"></i>
+                </a>
+              </div>
+              <span>or use your account</span>
+              <input type="email" placeholder="Email" />
+              <input type="password" placeholder="Password" />
+              <a href="#">Forgot your password?</a>
+              <button className="signInBtn">Sign In</button>
+            </form>
+          </div>
+          <div class="overlay-container">
+            <div class="overlay">
+              <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>
+                  To keep connected with us please login with your personal info
+                </p>
+                <button class="ghost signInBtn" id="signIn">
+                  Sign In
+                </button>
+              </div>
+              <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost signUpBtn" id="signUp">
+                  Sign Up
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </main>
   );
 }
 
@@ -108,17 +112,6 @@ const Wrapper = styled.section`
 
   * {
     box-sizing: border-box;
-  }
-
-  body {
-    background: #f6f5f7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-family: "Montserrat", sans-serif;
-    height: 100vh;
-    margin: -20px 0 50px;
   }
 
   h1 {
@@ -204,8 +197,9 @@ const Wrapper = styled.section`
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    margin: auto;
-    
+    margin: auto ;
+    margin-top: 80px ;
+    margin-bottom: 88px;
   }
 
   .form-container {
@@ -213,6 +207,7 @@ const Wrapper = styled.section`
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
+
   }
 
   .sign-in-container {
@@ -334,4 +329,37 @@ const Wrapper = styled.section`
     height: 40px;
     width: 40px;
   }
+
+  .social-container .icon {
+    font-size: 1.6rem;
+    color: #ab7a5f;
+  }
+  /* .signInBtn,.signUpBtn {
+    transition: transform 0.3s ease-in-out;
+  }
+  .signInBtn:hover,
+  .signUpBtn:hover {
+    cursor: pointer;
+    transform: translateY(15px);
+  } */
+
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px) rotate(0deg); }
+    50% { transform: translateX(5px) rotate(0deg); }
+    75% { transform: translateX(-5px) rotate(0deg); }
+    100% { transform: translateX(0) rotate(0deg); }
+  }
+
+  .social:hover {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  .signInBtn:hover,
+  .signUpBtn:hover {
+    animation: shake 0.5s ease-in-out;
+
+  }
+
+
 `;

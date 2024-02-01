@@ -23,8 +23,11 @@ const CartButtons = () => {
       </Link>
 
       <Link to="/login" onClick={closeSidebar}>
-        Login
+        <button className="login-btn">Login <FaUserPlus /></button>
+        
       </Link>
+
+     
       {/* {myUser ? (
         <button
           type="button"
@@ -88,7 +91,7 @@ const Wrapper = styled.div`
     color: var(--clr-white);
     padding: 12px;
   }
-  .auth-btn {
+  .login-btn {
     display: flex;
     align-items: center;
     background: transparent;
@@ -101,7 +104,7 @@ const Wrapper = styled.div`
       margin-left: 5px;
     }
   }
-  .auth-btn:hover {
+  .login-btn:hover {
     color: var(--clr-primary-5);
   }
 `;
