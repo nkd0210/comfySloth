@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import logo from "../assets/logo.svg";
+import logo2 from "../assets/Comfy-Cozy-Logo.jpg"
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { links } from "../utils/constants";
@@ -11,6 +12,7 @@ import { useUserContext } from "../context/user_context";
 const Nav = () => {
   const { isSidebarOpen, openSidebar, closeSidebar } = useProductsContext();
   const { myUser } = useUserContext();
+  const {isAuthenticated} = useUserContext();
 
   return (
     <NavContainer>
@@ -18,7 +20,7 @@ const Nav = () => {
         <div className="nav-header">
           <Link to="/">
             {/* <img src={logo} alt="comfy sloth" /> */}
-            <div className="logo">Cozy And Comfy</div>
+              <img className="logo" src={logo2} alt="cozy and comfy"/>
           </Link>
           <button className="nav-toggle" onClick={openSidebar}>
             <FaBars />
@@ -33,7 +35,7 @@ const Nav = () => {
               </li>
             );
           })}
-          {myUser && (
+          {isAuthenticated && (
             <li>
               <Link to="/checkout">checkout</Link>
             </li>
@@ -61,7 +63,7 @@ const NavContainer = styled.nav`
     align-items: center;
     justify-content: space-between;
     img {
-      width: 175px;
+      width: 125px;
       margin-left: -15px;
     }
   }
@@ -75,10 +77,11 @@ const NavContainer = styled.nav`
     }
   }
   .logo {
-    font-size: 30px;
+    /* font-size: 22px; */
     font-weight: 700;
     color: hsl(21.3, 31.1%, 52.2%);
     transition: transform 0.3s linear;
+    
   }
 
   .logo:hover {

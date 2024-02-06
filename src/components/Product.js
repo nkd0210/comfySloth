@@ -26,6 +26,7 @@ const Wrapper = styled.article`
     position: relative;
     background: var(--clr-black);
     border-radius: var(--radius);
+    overflow: hidden;
   }
   img {
     width: 100%;
@@ -33,6 +34,7 @@ const Wrapper = styled.article`
     object-fit: cover;
     border-radius: var(--radius);
     transition: var(--transition);
+    
   }
   .link {
     position: absolute;
@@ -55,6 +57,7 @@ const Wrapper = styled.article`
     }
   }
   .container:hover img {
+    transform: scale(1.2);
     opacity: 0.5;
   }
   .container:hover .link {

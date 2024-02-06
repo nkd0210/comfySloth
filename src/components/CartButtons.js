@@ -5,12 +5,12 @@ import styled from "styled-components";
 import { useProductsContext } from "../context/products_context";
 import { useCartContext } from "../context/cart_context";
 import { useUserContext } from "../context/user_context";
-import Login from "../pages/Login"
+import Login from "../pages/Login";
 
 const CartButtons = () => {
   const { closeSidebar } = useProductsContext();
   const { total_items } = useCartContext();
-  const { loginWithRedirect, myUser, logout } = useUserContext();
+  const { isAuthenticated, loginBtn, logoutBtn } = useUserContext();
 
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -21,13 +21,18 @@ const CartButtons = () => {
           <span className="cart-value">{total_items}</span>
         </span>
       </Link>
+      {isAuthenticated ? (
+        <button type="button" className="logout-btn" onClick={logoutBtn}>
+          Logout <FaUserMinus />
+        </button>
+      ) : (
+        <Link to="/login">
+          <button className="login-btn">
+            Login <FaUserPlus />
+          </button>
+        </Link>
+      )}
 
-      <Link to="/login" onClick={closeSidebar}>
-        <button className="login-btn">Login <FaUserPlus /></button>
-        
-      </Link>
-
-     
       {/* {myUser ? (
         <button
           type="button"
@@ -91,7 +96,8 @@ const Wrapper = styled.div`
     color: var(--clr-white);
     padding: 12px;
   }
-  .login-btn {
+  .login-btn,
+  .logout-btn {
     display: flex;
     align-items: center;
     background: transparent;
@@ -105,6 +111,9 @@ const Wrapper = styled.div`
     }
   }
   .login-btn:hover {
+    color: var(--clr-primary-5);
+  }
+  .logout-btn:hover {
     color: var(--clr-primary-5);
   }
 `;

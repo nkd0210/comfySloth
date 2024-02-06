@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useEffect } from "react";
-import { PageHero } from '../components'
+import { PageHero } from "../components";
+import { useUserContext } from "../context/user_context";
 
 export default function Login() {
+  const { loginBtn, logoutBtn } = useUserContext();
   useEffect(() => {
     const signUpButton = document.getElementById("signUp");
     const signInButton = document.getElementById("signIn");
@@ -33,11 +35,15 @@ export default function Login() {
       container.classList.remove("right-panel-active");
     }
   };
+  const handleCombineClick = () => {
+    handleSignUpClick();
+    loginBtn();
+  };
 
   return (
     <main>
       {/* <PageHero title="login"/> */}
-      <Wrapper>
+      <Wrapper className="page-100">
         <div class="container" id="container">
           <div class="form-container sign-up-container">
             <form action="#">
@@ -57,7 +63,9 @@ export default function Login() {
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
-              <button className="signUpBtn" onClick={handleSignUpClick}>Sign Up</button>
+              <button className="signUpBtn" onClick={handleCombineClick}>
+                Sign Up
+              </button>
             </form>
           </div>
           <div class="form-container sign-in-container">
@@ -78,7 +86,9 @@ export default function Login() {
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <a href="#">Forgot your password?</a>
-              <button className="signInBtn">Sign In</button>
+              <button className="signInBtn" onClick={loginBtn}>
+                Sign In
+              </button>
             </form>
           </div>
           <div class="overlay-container">
@@ -197,9 +207,9 @@ const Wrapper = styled.section`
     width: 768px;
     max-width: 100%;
     min-height: 480px;
-    margin: auto ;
-    margin-top: 80px ;
-    margin-bottom: 88px;
+    margin: auto;
+    /* margin-top: 80px ;
+    margin-bottom: 88px; */
   }
 
   .form-container {
@@ -207,7 +217,6 @@ const Wrapper = styled.section`
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
-
   }
 
   .sign-in-container {
@@ -344,11 +353,21 @@ const Wrapper = styled.section`
   } */
 
   @keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px) rotate(0deg); }
-    50% { transform: translateX(5px) rotate(0deg); }
-    75% { transform: translateX(-5px) rotate(0deg); }
-    100% { transform: translateX(0) rotate(0deg); }
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px) rotate(0deg);
+    }
+    50% {
+      transform: translateX(5px) rotate(0deg);
+    }
+    75% {
+      transform: translateX(-5px) rotate(0deg);
+    }
+    100% {
+      transform: translateX(0) rotate(0deg);
+    }
   }
 
   .social:hover {
@@ -358,8 +377,5 @@ const Wrapper = styled.section`
   .signInBtn:hover,
   .signUpBtn:hover {
     animation: shake 0.5s ease-in-out;
-
   }
-
-
 `;
