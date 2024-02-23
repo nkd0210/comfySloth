@@ -22,12 +22,19 @@ const CartButtons = () => {
         </span>
       </Link>
       {isAuthenticated ? (
-        <button type="button" className="logout-btn" onClick={logoutBtn}>
+        <button
+          type="button"
+          className="logout-btn"
+          onClick={() => {
+            closeSidebar();
+            logoutBtn();
+          }}
+        >
           Logout <FaUserMinus />
         </button>
       ) : (
         <Link to="/login">
-          <button className="login-btn">
+          <button className="login-btn" onClick={closeSidebar}>
             Login <FaUserPlus />
           </button>
         </Link>

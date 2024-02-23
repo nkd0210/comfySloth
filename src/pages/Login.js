@@ -7,6 +7,10 @@ import { useUserContext } from "../context/user_context";
 export default function Login() {
   const { loginBtn, logoutBtn } = useUserContext();
   useEffect(() => {
+    var form = document.getElementById("form");
+    form.addEventListener("click", (e) => {
+      e.preventDefault();
+    });
     const signUpButton = document.getElementById("signUp");
     const signInButton = document.getElementById("signIn");
     const container = document.getElementById("container");
@@ -46,7 +50,7 @@ export default function Login() {
       <Wrapper className="page-100">
         <div class="container" id="container">
           <div class="form-container sign-up-container">
-            <form action="#">
+            <form id="form" action="#">
               <h1>Create Account</h1>
               <div class="social-container">
                 <a href="/facebook" class="social">
@@ -63,13 +67,17 @@ export default function Login() {
               <input type="text" placeholder="Name" />
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
-              <button className="signUpBtn" onClick={handleCombineClick}>
+              <button
+                type="button"
+                className="signUpBtn"
+                onClick={handleCombineClick}
+              >
                 Sign Up
               </button>
             </form>
           </div>
           <div class="form-container sign-in-container">
-            <form action="#">
+            <form id="form" action="#">
               <h1 onClick={handleSignInClick}>Sign in</h1>
               <div class="social-container">
                 <a href="/facebook" class="social">
@@ -86,7 +94,7 @@ export default function Login() {
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <a href="#">Forgot your password?</a>
-              <button className="signInBtn" onClick={loginBtn}>
+              <button type="button" className="signInBtn" onClick={loginBtn}>
                 Sign In
               </button>
             </form>

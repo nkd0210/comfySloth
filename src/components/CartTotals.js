@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const CartTotals = () => {
   const { total_amount, shipping_fee } = useCartContext();
   const { isAuthenticated, loginBtn } = useUserContext();
-
+  
   return (
     <Wrapper>
       <div>

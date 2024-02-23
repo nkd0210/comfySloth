@@ -13,7 +13,7 @@ const Nav = () => {
   const { isSidebarOpen, openSidebar, closeSidebar } = useProductsContext();
   const { myUser } = useUserContext();
   const {isAuthenticated} = useUserContext();
-
+  
   return (
     <NavContainer>
       <div className="nav-center">
